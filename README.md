@@ -6,7 +6,7 @@ This mixin adds a has many polymorphic relationship to a model and creates all t
 - Name 
 	- name of the relationship, there is a convention that whatever name you choose, the polymorphic table columns on your through table should match.
         
--Options
+- Options
 	- through - the model that handles the through relationship
 	- models  - models that should be included in this polymophic relationship
         
