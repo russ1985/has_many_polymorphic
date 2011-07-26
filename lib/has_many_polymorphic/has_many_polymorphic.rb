@@ -84,8 +84,6 @@ module RussellEdge #:nodoc:
               @records = @records | self.send(model.to_s)
             end
 
-            @records.uniq!
-
             @records
           end
 
