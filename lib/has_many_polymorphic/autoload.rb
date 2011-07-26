@@ -39,12 +39,12 @@ class Rails::Initializer #:nodoc:
   # Make sure it gets loaded in the console, tests, and migrations
   def after_initialize_with_autoload
     after_initialize_without_autoload
-    ErpServices::Morpheus.autoload
+    RussellEdge::HasManyPolymorphic.autoload
   end
   alias_method_chain :after_initialize, :autoload
 end
 
 ActionController::Dispatcher.to_prepare(:morpheus_autoload) do
   # Make sure it gets loaded in the app
-  ErpServices::Morpheus.autoload
+  RussellEdge::HasManyPolymorphic.autoload
 end
