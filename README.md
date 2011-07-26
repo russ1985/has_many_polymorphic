@@ -21,7 +21,7 @@ There is an after_save call back that will save the relationships when they are 
 ### Example Usage
 		  
     class PreferenceType < ActiveRecord::Base
-      has_morpheus :preferenced_records,
+      has_many_polymorphic :preferenced_records,
         :through => :valid_preference_types,
         :models => [:desktops, :organizers]
     end

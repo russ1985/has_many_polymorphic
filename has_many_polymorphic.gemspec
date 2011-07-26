@@ -9,12 +9,9 @@ Gem::Specification.new do |s|
   s.authors = ["Russell Holmes"]
   s.description = %q{Simple replacement for has_many_polymorphs}
   s.email = %q{rholmes@tnsolutionsinc.com}
-  s.extra_rdoc_files = [
-    "README.rdoc"
-  ]
-  s.files = Dir.glob("lib/**/*") + %w(MIT-LICENSE README.rdoc CHANGELOG)
+  s.files = Dir.glob("lib/**/*") + %w(MIT-LICENSE.txt README.md)
   s.homepage = %q{https://github.com/russ1985/has_many_polymorphic}
-  s.rdoc_options = ["--main", "README.rdoc", "--inline-source", "--line-numbers"]
+  s.rdoc_options = ["--main", "README.md", "--inline-source", "--line-numbers"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.6}
   s.summary = %q{Simple replacement for has_many_polymorphs}
