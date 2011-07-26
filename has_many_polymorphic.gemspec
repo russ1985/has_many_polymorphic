@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email = %q{rholmes@tnsolutionsinc.com}
   s.files = Dir.glob("lib/**/*") + %w(MIT-LICENSE.txt README.md)
   s.homepage = %q{https://github.com/russ1985/has_many_polymorphic}
-  s.rdoc_options = ["--main", "README.md", "--inline-source", "--line-numbers"]
+  s.rdoc_options = ["--main", "--inline-source", "--line-numbers"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.6}
   s.summary = %q{Simple replacement for has_many_polymorphs}

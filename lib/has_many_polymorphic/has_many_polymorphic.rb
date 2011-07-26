@@ -60,7 +60,11 @@ module RussellEdge #:nodoc:
 
         def has_many_polymorphic(name, options = {})
           target_class_name = self.name
-
+          instance_array_name = "#{name}_array".to_sym
+          
+          #declare array to related models
+          attr_accessor instance_array_name
+        
           #create the has_many relationship
           has_many options[:through], :dependent => :destroy
 
@@ -79,12 +83,17 @@ module RussellEdge #:nodoc:
 
           #I want to keep the  << and push methods of array so this helps to keep them.
           define_method name do
-            @records = @records || []
+            #used the declared instance variable array
+            records = self.send(instance_array_name.to_s)
+            records = records || []
             options[:models].each do |model|
-              @records = @records | self.send(model.to_s)
+              records = records | self.send(model.to_s)
             end
-
-            @records
+            
+            #set it back to the instance variable
+            self.send("#{instance_array_name.to_s}=", records)
+            
+            records
           end
 
           #before we save this model make sure you save all the relationships.
