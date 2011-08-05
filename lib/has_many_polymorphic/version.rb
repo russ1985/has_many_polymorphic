@@ -1,3 +1,3 @@
 module HasManyPolymorphic
-  VERSION = '0.0.3' unless defined?(::HasManyPolymorphic::VERSION)
+  VERSION = '0.1.0' unless defined?(::HasManyPolymorphic::VERSION)
 end
