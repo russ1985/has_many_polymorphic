@@ -1,7 +1,13 @@
 = HasManyPolymorphic
 
 This mixin adds a has many polymorphic relationship to a model and creates all the relationships needed by rails to handle it.
-        
+ 
+== Options
+- Models
+	- the models you want to autoload so all the relationships are created on initialzation of Rails
+	
+	RussellEdge::HasManyPolymorphic.options[:models] = %w(PreferenceType)
+		
 == Params
 - Name 
 	- name of the relationship, there is a convention that whatever name you choose, the polymorphic table columns on your through table should match.
