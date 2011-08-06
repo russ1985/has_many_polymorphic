@@ -6,7 +6,7 @@ This mixin adds a has many polymorphic relationship to a model and creates all t
 - Models
 	- the models you want to autoload so all the relationships are created on initialzation of Rails
 	
-	RussellEdge::HasManyPolymorphic.options[:models] = %w(PreferenceType)
+	 RussellEdge::HasManyPolymorphic.options[:models] = %w(PreferenceType)
 		
 == Params
 - Name 
