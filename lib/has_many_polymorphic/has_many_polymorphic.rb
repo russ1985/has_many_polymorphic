@@ -120,13 +120,8 @@ module RussellEdge #:nodoc:
           #add the relationship to the models.
           options[:models].each do |model|
             model.to_s.classify.constantize.class_exec do
-              #build the has many polymorphic relationship via finder_sql
-              has_many target_class_name.underscore.pluralize.to_sym,
-                :class_name => "#{target_class_name}",
-                :finder_sql => 'SELECT DISTINCT target.* from '+target_class_name.tableize+' target join '+
-                options[:through].to_s+' join_table on join_table.'+target_class_name.underscore.singularize+'_id = target.id '+
-                'and join_table.'+name.to_s.singularize+'_type = \'#{model_class_name}\' and '+
-                'join_table.'+name.to_s.singularize+'_id = #{id}'
+              has_many options[:through], :as => name.to_s.singularize
+              has_many target_class_name.tableize, :through => options[:through]
 
               #we want to save the relantionships when the model is saved
               before_save do |record|
