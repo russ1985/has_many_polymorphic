@@ -148,11 +148,7 @@ module RussellEdge #:nodoc:
             model.to_s.classify.constantize.class_eval do
               #check if this is using STI if so use the type attribute else use the class name
               def model_class_name
-                if attributes['type']
-                  attributes['type']
-                else
-                  self.class.to_s
-                end
+                attributes['type'] ? attributes['type'] : self.class.to_s
               end
             end
           end
