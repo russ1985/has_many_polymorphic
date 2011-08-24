@@ -99,16 +99,16 @@ module RussellEdge #:nodoc:
           #before we save this model make sure you save all the relationships.
           before_save do |record|
             record.send(name).each do |reln_record|
-              conditions = "#{name.to_s.singularize}_id = #{reln_record.id} and #{name.to_s.singularize}_type = '#{reln_record.class.name}'"
-              exisiting_record = record.send("#{options[:through]}").find(:first,
-                :conditions => conditions)
+              #handle STI get superclass class_name if not sub class of ActiveRecord::Base	
+              klass_name = (reln_record.class.superclass == ActiveRecord::Base) ? reln_record.class.name : reln_record.class.superclass.name
+              conditions = "#{name.to_s.singularize}_id = #{reln_record.id} and #{name.to_s.singularize}_type = '#{klass_name}'"
+              exisiting_record = record.send("#{options[:through]}").find(:first,:conditions => conditions)
 				
-			  #handle STI get superclass class_name if not sub class of ActiveRecord::Base	
-			  class_name = (reln_record.superclass == ActiveRecord::Base) ? reln_record.class.name : reln_record.superclass.class.name
               if exisiting_record.nil?
+                class_name = (reln_record.class.superclass == ActiveRecord::Base) ? reln_record.class.name : reln_record.class.superclass.name
                 values_hash = {}
                 values_hash["#{record.class.name.underscore}_id"] = record.id
-                values_hash["#{name.to_s.singularize}_type"] = reln_record.class.name
+                values_hash["#{name.to_s.singularize}_type"] = klass_name
                 values_hash["#{name.to_s.singularize}_id"] = reln_record.id
               
                 options[:through].to_s.classify.constantize.create(values_hash)
