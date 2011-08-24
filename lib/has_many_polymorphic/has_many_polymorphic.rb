@@ -99,14 +99,16 @@ module RussellEdge #:nodoc:
           #before we save this model make sure you save all the relationships.
           before_save do |record|
             record.send(name).each do |reln_record|
-              conditions = "#{name.to_s.singularize}_id = #{reln_record.id} and #{name.to_s.singularize}_type = '#{reln_record.class.name}'"
-              exisiting_record = record.send("#{options[:through]}").find(:first,
-                :conditions => conditions)
-
+              #handle STI get superclass class_name if not sub class of ActiveRecord::Base	
+              klass_name = (reln_record.class.superclass == ActiveRecord::Base) ? reln_record.class.name : reln_record.class.superclass.name
+              conditions = "#{name.to_s.singularize}_id = #{reln_record.id} and #{name.to_s.singularize}_type = '#{klass_name}'"
+              exisiting_record = record.send("#{options[:through]}").find(:first,:conditions => conditions)
+				
               if exisiting_record.nil?
+                class_name = (reln_record.class.superclass == ActiveRecord::Base) ? reln_record.class.name : reln_record.class.superclass.name
                 values_hash = {}
                 values_hash["#{record.class.name.underscore}_id"] = record.id
-                values_hash["#{name.to_s.singularize}_type"] = reln_record.class.name
+                values_hash["#{name.to_s.singularize}_type"] = klass_name
                 values_hash["#{name.to_s.singularize}_id"] = reln_record.id
               
                 options[:through].to_s.classify.constantize.create(values_hash)
@@ -122,34 +124,6 @@ module RussellEdge #:nodoc:
             model.to_s.classify.constantize.class_exec do
               has_many options[:through], :as => name.to_s.singularize
               has_many target_class_name.tableize, :through => options[:through]
-
-              #we want to save the relantionships when the model is saved
-              before_save do |record|
-                record.send(target_class_name.underscore.pluralize).each do |reln_record|
-
-                  db_result = ActiveRecord::Base.connection.select_all("SELECT count(*) as num_rows FROM #{options[:through]}
-                                                    where #{name.to_s.singularize}_id = #{record.id}
-                                                    and #{name.to_s.singularize}_type = '#{record.class.name}'
-                                                    and #{target_class_name.underscore.singularize}_id = #{reln_record.id}")
-
-                  #make sure that the relantionship does not already exist
-                  num_rows = db_result[0]['num_rows'] unless db_result == -1
-                  if num_rows.nil? || num_rows.to_i == 0
-                    values_hash = {}
-                    values_hash["#{reln_record.class.name.underscore}_id"] = reln_record.id
-                    values_hash["#{name.to_s.singularize}_type"] = record.class.name
-                    values_hash["#{name.to_s.singularize}_id"] = record.id
-                    options[:through].to_s.classify.constantize.create(values_hash)
-                  end
-                end
-              end
-            end
-
-            model.to_s.classify.constantize.class_eval do
-              #check if this is using STI if so use the type attribute else use the class name
-              def model_class_name
-                attributes['type'] ? attributes['type'] : self.class.to_s
-              end
             end
           end
 
