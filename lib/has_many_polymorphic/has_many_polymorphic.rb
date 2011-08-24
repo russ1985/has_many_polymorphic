@@ -125,13 +125,6 @@ module RussellEdge #:nodoc:
               has_many options[:through], :as => name.to_s.singularize
               has_many target_class_name.tableize, :through => options[:through]
             end
-
-            model.to_s.classify.constantize.class_eval do
-              #check if this is using STI if so use the type attribute else use the class name
-              def model_class_name
-                attributes['type'] ? attributes['type'] : self.class.to_s
-              end
-            end
           end
 
         end
