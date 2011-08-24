@@ -105,7 +105,6 @@ module RussellEdge #:nodoc:
               exisiting_record = record.send("#{options[:through]}").find(:first,:conditions => conditions)
 				
               if exisiting_record.nil?
-                class_name = (reln_record.class.superclass == ActiveRecord::Base) ? reln_record.class.name : reln_record.class.superclass.name
                 values_hash = {}
                 values_hash["#{record.class.name.underscore}_id"] = record.id
                 values_hash["#{name.to_s.singularize}_type"] = klass_name
