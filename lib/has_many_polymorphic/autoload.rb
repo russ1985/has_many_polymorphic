@@ -9,7 +9,7 @@ This ensures that helper methods are injected into the target classes.
 	#define the models that use has_many_polymorphic. has_many_polymorphs combed the file system for models
 	#that had the has_many_polymorphs method.  This is not as robust but more efficent.  It can be set via
 	#
-	#RussellEdge::HasManyPolymorphic::OPTIONS = { :models => %w(PreferenceType AnotherModel) }
+	#RussellEdge::HasManyPolymorphic.options = { :models => %w(PreferenceType AnotherModel) }
 	# 
     DEFAULT_OPTIONS = {:models => %w()}
     mattr_accessor :options
