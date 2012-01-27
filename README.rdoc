@@ -9,7 +9,7 @@ This mixin adds a has many polymorphic relationship to a model and creates all t
 == Setup
 
 	You must define the models that you want to use inside an initializer using
-        RussellEdge::HasManyPolymorphic.add_models(%w(PreferenceType)) or RussellEdge::HasManyPolymorphic.add_models("PreferenceType")
+        RussellEdge::HasManyPolymorphic::Engine.add_models(%w(PreferenceType)) or RussellEdge::HasManyPolymorphic.add_models("PreferenceType")
 		
 == Params
 - Name 
@@ -28,27 +28,56 @@ This mixin adds a has many polymorphic relationship to a model and creates all t
 There is an after_save call back that will save the relationships when they are added or removed. If you want to remove a relationship the models need to be destroyed and this model reloaded.
         
 == Example Usage
-		  
-    class PreferenceType < ActiveRecord::Base
-      has_many_polymorphic :preferenced_records,
-        :through => :valid_preference_types,
-        :models => [:desktops, :organizers]
+	
+=== Schema
+	create_table :zoos, :force => true do |t|
+      t.string :name
     end
+  
+    create_table :monkeys, :force => true do |t|
+      t.string :name
+    end
+  
+    create_table :bears, :force => true do |t|
+      t.string :name
+    end
+  
+    create_table :birds, :force => true do |t|
+      t.string :name
+    end
+  
+    create_table :zoo_animals, :force => true do |t|
+      t.integer :zoo_id
+	  t.references :animal, :polymorphic => true
+    end
+	
+=== Class
+	
+	class Zoo < ActiveRecord::Base
+	  has_many_polymorphic :animals,
+	    :through => :zoo_animals,
+		:models => [:monkeys, :birds, :bears]
+	end
 		  
 this gives you the following
 		
-    preferenceType = PreferenceType.first
-    preferenceType.desktops
-    preferenceType.organizers
+    zoo = Zoo.first
+    zoo.monkeys
+    zoo.birds
+	zoo.bears
 		   
 and
 		   
-    preferenceType.preferenced_records
+    zoo = Zoo.first
+	zoo.animals
 		   
 which is a concatentated array of the models. You also get the following
 		   
-    desktop = Desktop.first
-    desktop.preference_types
+    monkey = Monkey.first
+    monkey.zoos
 		   
-    organizer = Organizer.first
-    organizer.preference_types
+    bird = Bird.first
+    bird.zoos
+	
+	bear = Bear.first
+    bear.zoos
