@@ -8,11 +8,15 @@ Gem::Specification.new do |s|
   s.version = ::HasManyPolymorphic::VERSION
   s.authors = ["Russell Holmes"]
   s.description = %q{Simple replacement for has_many_polymorphs}
-  s.email = %q{rholmes@tnsolutionsinc.com}
-  s.files = Dir.glob("lib/**/*") + %w(MIT-LICENSE.txt README.rdoc)
+  s.email = %q{russonrails@gmail.com}
+  s.files = Dir["{lib,spec}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.homepage = %q{https://github.com/russ1985/has_many_polymorphic}
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.6}
   s.summary = %q{Simple replacement for has_many_polymorphs}
-  s.add_runtime_dependency 'activerecord', '>= 2.3.5'
+  
+  s.add_dependency 'rails', '~> 3.1'
+  s.add_dependency "rspec-rails", "~> 2.7"
+  s.add_dependency "sqlite3", "~> 1.3.4"
+  s.add_dependency "simplecov", "~> 0.5"
 end
