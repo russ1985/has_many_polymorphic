@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.authors = ["Russell Holmes"]
   s.description = %q{Simple replacement for has_many_polymorphs}
   s.email = %q{russonrails@gmail.com}
-  s.files = Dir["{lib,spec}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.files = Dir["{lib,spec}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
   s.homepage = %q{https://github.com/russ1985/has_many_polymorphic}
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.6}
