@@ -30,6 +30,8 @@ There is an after_save call back that will save the relationships when they are 
 == Example Usage
 	
 === Schema
+
+
 	create_table :zoos, :force => true do |t|
       t.string :name
     end
@@ -51,13 +53,16 @@ There is an after_save call back that will save the relationships when they are 
 	  t.references :animal, :polymorphic => true
     end
 	
+	
 === Class
 	
-	class Zoo < ActiveRecord::Base
+	
+    class Zoo < ActiveRecord::Base
 	  has_many_polymorphic :animals,
 	    :through => :zoo_animals,
 		:models => [:monkeys, :birds, :bears]
 	end
+		  
 		  
 this gives you the following
 		
