@@ -81,7 +81,7 @@ module RussellEdge #:nodoc:
           end
         end
 
-        #I want to keep the  << and push methods of array so this helps to keep them.
+        #I want to keep the << and push methods of array so this helps to keep them.
         define_method name do
           #used the declared instance variable array
           records = self.send(instance_array_name.to_s)
