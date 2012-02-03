@@ -102,7 +102,7 @@ module RussellEdge #:nodoc:
             #handle STI get superclass class_name if not sub class of ActiveRecord::Base
             klass_name = (reln_record.class.superclass == ActiveRecord::Base) ? reln_record.class.name : reln_record.class.superclass.name
             conditions = "#{name.to_s.singularize}_id = #{reln_record.id} and #{name.to_s.singularize}_type = '#{klass_name}'"
-            exisiting_record = record.send("#{options[:through]}").find(:first,:conditions => conditions)
+            exisiting_record = record.send("#{options[:through]}").where(conditions).first
 				
             if exisiting_record.nil?
               values_hash = {}
