@@ -121,8 +121,8 @@ module RussellEdge #:nodoc:
         #add the relationship to the models.
         options[:models].each do |model|
           model.to_s.classify.constantize.class_exec do
-            has_many options[:through], :as => name.to_s.singularize
-            has_many target_class_name.tableize, :through => options[:through]
+            has_many options[:through], :as => name.to_s.singularize, :dependent => :destroy
+            has_many target_class_name.tableize, :through => options[:through], :dependent => :destroy
           end
         end
 

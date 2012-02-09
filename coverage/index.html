@@ -23,7 +23,7 @@
       <img src="./assets/0.5.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2012-02-02T19:15:54-05:00">2012-02-02T19:15:54-05:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2012-02-09T15:40:39-05:00">2012-02-09T15:40:39-05:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -60,7 +60,7 @@
     <tbody>
       
       <tr>
-        <td class="strong"><a href="#0682e06767abdbb7fcf5078f0c6b39f7d6297e96" class="src_link" title="lib/has_many_polymorphic.rb">lib/has_many_polymorphic.rb</a></td>
+        <td class="strong"><a href="#9f916559150cd679b2b42e36ee97473a8168c18a" class="src_link" title="lib/has_many_polymorphic.rb">lib/has_many_polymorphic.rb</a></td>
         <td class="green strong">100.0 %</td>
         <td>4</td>
         <td>2</td>
@@ -70,7 +70,7 @@
       </tr>
       
       <tr>
-        <td class="strong"><a href="#00bd30503b2156d54de6964e1142e3efe1bfcd6c" class="src_link" title="lib/has_many_polymorphic/engine.rb">lib/has_many_polymorphic/engine.rb</a></td>
+        <td class="strong"><a href="#7a47546a142663fdcb17bc2b2baef5f507ce6e68" class="src_link" title="lib/has_many_polymorphic/engine.rb">lib/has_many_polymorphic/engine.rb</a></td>
         <td class="red strong">72.73 %</td>
         <td>44</td>
         <td>22</td>
@@ -80,7 +80,7 @@
       </tr>
       
       <tr>
-        <td class="strong"><a href="#5aa28ce92fc165e30575fa18912075e35edd59df" class="src_link" title="lib/has_many_polymorphic/has_many_polymorphic.rb">lib/has_many_polymorphic/has_many_polymorphic.rb</a></td>
+        <td class="strong"><a href="#773810154c4ac0a0e4510ec698fda484ab117821" class="src_link" title="lib/has_many_polymorphic/has_many_polymorphic.rb">lib/has_many_polymorphic/has_many_polymorphic.rb</a></td>
         <td class="green strong">95.24 %</td>
         <td>143</td>
         <td>42</td>
@@ -90,7 +90,7 @@
       </tr>
       
       <tr>
-        <td class="strong"><a href="#f6e53268f36823a01cedf6369682570660c7f1bc" class="src_link" title="spec/db/schema.rb">spec/db/schema.rb</a></td>
+        <td class="strong"><a href="#e5cbf594d22994e0aa01a603e7ebf5fef78ba9a3" class="src_link" title="spec/db/schema.rb">spec/db/schema.rb</a></td>
         <td class="green strong">100.0 %</td>
         <td>22</td>
         <td>12</td>
@@ -100,7 +100,7 @@
       </tr>
       
       <tr>
-        <td class="strong"><a href="#2ce641221a2c2cc78d2918874e24f494d2031120" class="src_link" title="spec/support/models.rb">spec/support/models.rb</a></td>
+        <td class="strong"><a href="#0fb69260bc2f008ffa48536e07bcfa8f1f3e64ec" class="src_link" title="spec/support/models.rb">spec/support/models.rb</a></td>
         <td class="green strong">100.0 %</td>
         <td>20</td>
         <td>8</td>
@@ -125,7 +125,7 @@
     
       <div class="source_files">
       
-        <div class="source_table" id="0682e06767abdbb7fcf5078f0c6b39f7d6297e96">
+        <div class="source_table" id="9f916559150cd679b2b42e36ee97473a8168c18a">
   <div class="header">
     <h3>lib/has_many_polymorphic.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
@@ -167,7 +167,7 @@
   </pre>
 </div>
       
-        <div class="source_table" id="00bd30503b2156d54de6964e1142e3efe1bfcd6c">
+        <div class="source_table" id="7a47546a142663fdcb17bc2b2baef5f507ce6e68">
   <div class="header">
     <h3>lib/has_many_polymorphic/engine.rb</h3>
     <h4><span class="red">72.73 %</span> covered</h4>
@@ -449,7 +449,7 @@
   </pre>
 </div>
       
-        <div class="source_table" id="5aa28ce92fc165e30575fa18912075e35edd59df">
+        <div class="source_table" id="773810154c4ac0a0e4510ec698fda484ab117821">
   <div class="header">
     <h3>lib/has_many_polymorphic/has_many_polymorphic.rb</h3>
     <h4><span class="green">95.24 %</span> covered</h4>
@@ -1204,13 +1204,13 @@
         <li class="covered" data-hits="3" data-linenumber="124">
           <span class="hits">3</span>
           
-          <code class="ruby">            has_many options[:through], :as =&gt; name.to_s.singularize</code>
+          <code class="ruby">            has_many options[:through], :as =&gt; name.to_s.singularize, :dependent =&gt; :destroy</code>
         </li>
       
         <li class="covered" data-hits="3" data-linenumber="125">
           <span class="hits">3</span>
           
-          <code class="ruby">            has_many target_class_name.tableize, :through =&gt; options[:through]</code>
+          <code class="ruby">            has_many target_class_name.tableize, :through =&gt; options[:through], :dependent =&gt; :destroy</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="126">
@@ -1325,7 +1325,7 @@
   </pre>
 </div>
       
-        <div class="source_table" id="f6e53268f36823a01cedf6369682570660c7f1bc">
+        <div class="source_table" id="e5cbf594d22994e0aa01a603e7ebf5fef78ba9a3">
   <div class="header">
     <h3>spec/db/schema.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
@@ -1475,7 +1475,7 @@
   </pre>
 </div>
       
-        <div class="source_table" id="2ce641221a2c2cc78d2918874e24f494d2031120">
+        <div class="source_table" id="0fb69260bc2f008ffa48536e07bcfa8f1f3e64ec">
   <div class="header">
     <h3>spec/support/models.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
