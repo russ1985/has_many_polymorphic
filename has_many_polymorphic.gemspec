@@ -17,6 +17,12 @@ Gem::Specification.new do |s|
   
   s.add_dependency 'rails', ">= 3.0"
   s.add_dependency "rspec-rails", "~> 2.7"
-  s.add_dependency "sqlite3", "~> 1.3.4"
   s.add_dependency "simplecov", "~> 0.5"
+  
+  if RUBY_PLATFORM == 'java'
+    s.add_development_dependency "jdbc-sqlite3"
+  else
+    s.add_development_dependency "sqlite3"
+  end
+
 end
