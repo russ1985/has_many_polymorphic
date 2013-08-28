@@ -134,7 +134,7 @@ module RussellEdge #:nodoc:
       def reload(*args)
         @records = []
 
-        super args
+        super
       end
 
     end
