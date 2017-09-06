@@ -16,8 +16,8 @@ Gem::Specification.new do |s|
   s.summary = %q{Simple replacement for has_many_polymorphs}
   
   s.add_dependency 'rails', ">= 3.0"
-  s.add_dependency "rspec-rails", "~> 2.7"
-  s.add_dependency "simplecov", "~> 0.5"
+  s.add_dependency "rspec-rails", "~> 3.6"
+  s.add_dependency "simplecov", "~> 0.15"
   
   if RUBY_PLATFORM == 'java'
     s.add_development_dependency "jdbc-sqlite3"
