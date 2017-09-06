@@ -15,7 +15,8 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.6}
   s.summary = %q{Simple replacement for has_many_polymorphs}
   
-  s.add_dependency 'rails', ">= 3.0"
+  s.add_dependency 'rails', "~> 3.2"
+  s.add_dependency "test-unit", "~> 3.0"
   s.add_dependency "rspec-rails", "~> 3.6"
   s.add_dependency "simplecov", "~> 0.15"
   

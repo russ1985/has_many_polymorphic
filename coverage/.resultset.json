@@ -1,13 +1,13 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/russellfholmes/Desktop/compass/git_repos/has_many_polymorphic/lib/has_many_polymorphic.rb": [
+      "/Users/russellholmes/Desktop/files/saas_instances/khaan/lib/has_many_polymorphic/lib/has_many_polymorphic.rb": [
         1,
         1,
         null,
         null
       ],
-      "/Users/russellfholmes/Desktop/compass/git_repos/has_many_polymorphic/lib/has_many_polymorphic/has_many_polymorphic.rb": [
+      "/Users/russellholmes/Desktop/files/saas_instances/khaan/lib/has_many_polymorphic/lib/has_many_polymorphic/has_many_polymorphic.rb": [
         1,
         1,
         null,
@@ -152,7 +152,7 @@
         null,
         null
       ],
-      "/Users/russellfholmes/Desktop/compass/git_repos/has_many_polymorphic/lib/has_many_polymorphic/engine.rb": [
+      "/Users/russellholmes/Desktop/files/saas_instances/khaan/lib/has_many_polymorphic/lib/has_many_polymorphic/engine.rb": [
         1,
         1,
         1,
@@ -198,7 +198,7 @@
         null,
         null
       ],
-      "/Users/russellfholmes/Desktop/compass/git_repos/has_many_polymorphic/spec/support/models.rb": [
+      "/Users/russellholmes/Desktop/files/saas_instances/khaan/lib/has_many_polymorphic/spec/support/models.rb": [
         1,
         null,
         null,
@@ -220,7 +220,7 @@
         null,
         null
       ],
-      "/Users/russellfholmes/Desktop/compass/git_repos/has_many_polymorphic/spec/db/schema.rb": [
+      "/Users/russellholmes/Desktop/files/saas_instances/khaan/lib/has_many_polymorphic/spec/db/schema.rb": [
         1,
         1,
         1,
@@ -245,6 +245,6 @@
         null
       ]
     },
-    "timestamp": 1328820039
+    "timestamp": 1504741138
   }
 }
