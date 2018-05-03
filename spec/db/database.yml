@@ -1,3 +1,0 @@
-spec:
-  adapter: sqlite3
-  database: has_many_polymorphic_spec.sqlite3

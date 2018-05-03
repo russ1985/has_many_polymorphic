@@ -1,20 +1,23 @@
-class Monkey < ActiveRecord::Base
+class ApplicationRecord < ActiveRecord::Base
+  self.abstract_class = true
 end
 
-class Bird < ActiveRecord::Base
+class Monkey < ApplicationRecord
 end
 
-class Bear < ActiveRecord::Base
+class Bird < ApplicationRecord
 end
 
-class ZooAnimal < ActiveRecord::Base
-	belongs_to :zoo
-	belongs_to :animal, :polymorphic => true
+class Bear < ApplicationRecord
 end
 
-class Zoo < ActiveRecord::Base
-	has_many_polymorphic :animals,
-		:through => :zoo_animals,
-		:models => [:monkeys, :birds, :bears]
+class ZooAnimal < ApplicationRecord
+  belongs_to :zoo, optional: true
+  belongs_to :animal, :polymorphic => true, optional: true
 end
 
+class Zoo < ApplicationRecord
+  has_many_polymorphic :animals,
+    :through => :zoo_animals,
+    :models => [:monkeys, :birds, :bears]
+end
